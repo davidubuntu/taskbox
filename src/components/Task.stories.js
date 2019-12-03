@@ -26,13 +26,21 @@ const longTitle = `This task's name is absurdly large. In fact, I think if I kee
   .add('default', () => <Task task={task} {...actions} />)
   .add('pinned', () => <Task task={{ ...task, state: 'TASK_PINNED' }} {...actions} />)
   .add('archived', () => <Task task={{ ...task, state: 'TASK_ARCHIVED' }} {...actions} />)
-  .add('long title', () => <Task task={{ ...task, title: longTitle }} {...actions} />); */
+  .add('long title', () => <Task task={{ ...task, title: longTitle }} {...actions} />);  */
 
 storiesOf('Task', module)
   .addDecorator(withKnobs)
+  .addParameters({
+    assets: [
+      "/icon/todos.svg",
+      "path/to/another/asset.png",
+      "path/to/yet/another/asset.png"
+    ]
+  })
   .add('default', () => {
     return <Task task={object('task', { ...task })} {...actions} />;
   })
   .add('pinned', () => <Task task={{ ...task, state: 'TASK_PINNED' }} {...actions} />)
   .add('archived', () => <Task task={{ ...task, state: 'TASK_ARCHIVED' }} {...actions} />)
   .add('long title', () => <Task task={{ ...task, title: longTitle }} {...actions} />)
+  
